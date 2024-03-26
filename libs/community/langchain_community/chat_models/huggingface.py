@@ -21,6 +21,7 @@ from langchain_community.llms.huggingface_hub import HuggingFaceHub
 from langchain_community.llms.huggingface_text_gen_inference import (
     HuggingFaceTextGenInference,
 )
+from langchain_community.llms.huggingface_pipeline import HuggingFacePipeline
 
 DEFAULT_SYSTEM_PROMPT = """You are a helpful, respectful, and honest assistant."""
 
@@ -63,7 +64,7 @@ class ChatHuggingFace(BaseChatModel):
     def validate_llm(cls, values: dict) -> dict:
         if not isinstance(
             values["llm"],
-            (HuggingFaceTextGenInference, HuggingFaceEndpoint, HuggingFaceHub),
+            (HuggingFaceTextGenInference, HuggingFaceEndpoint, HuggingFaceHub,HuggingFacePipeline),
         ):
             raise TypeError(
                 "Expected llm to be one of HuggingFaceTextGenInference, "
